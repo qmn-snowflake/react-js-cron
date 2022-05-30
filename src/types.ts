@@ -48,6 +48,8 @@ export interface CronProps {
    */
   leadingZero?: LeadingZero
 
+  periodOptions?: PeriodType[]
+
   /**
    * Define the default period when the default value is empty.
    *
@@ -248,7 +250,8 @@ export interface PeriodProps
   > {
   value: PeriodType
   setValue: SetValuePeriod
-  shortcuts: Shortcuts
+  shortcuts: Shortcuts,
+  periodOptions?: PeriodType[],
 }
 export interface MonthsProps extends FieldProps {
   humanizeLabels: boolean

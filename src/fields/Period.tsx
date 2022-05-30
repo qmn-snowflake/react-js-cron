@@ -1,14 +1,14 @@
 import React, { useCallback, useMemo } from 'react'
 import Select from 'antd/lib/select'
 
-import { PeriodProps } from '../types'
+import { PeriodProps, PeriodType } from '../types'
 import { DEFAULT_LOCALE_EN } from '../locale'
 import { classNames } from '../utils'
 
 export default function Period(props: PeriodProps) {
-  const { value, setValue, locale, className, disabled, readOnly, shortcuts } =
+  const { value, setValue, locale, className, disabled, readOnly, shortcuts, periodOptions } =
     props
-  let options = [
+  let options: { value: PeriodType, label: string }[] = [
     {
       value: 'year',
       label: locale.yearOption || DEFAULT_LOCALE_EN.yearOption,
@@ -43,6 +43,12 @@ export default function Period(props: PeriodProps) {
         label: locale.rebootOption || DEFAULT_LOCALE_EN.rebootOption,
       },
     ]
+  }
+
+  if (periodOptions && periodOptions.length > 0) {
+    options = options.filter(option => {
+      return periodOptions.includes(option.value);
+    })
   }
 
   const handleChange = useCallback(

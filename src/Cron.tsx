@@ -26,6 +26,7 @@ export default function Cron(props: CronProps) {
     onError,
     className,
     defaultPeriod = 'day',
+    periodOptions,
     allowEmpty = 'for-default-value',
     humanizeLabels = true,
     humanizeValue = false,
@@ -267,6 +268,7 @@ export default function Cron(props: CronProps) {
         disabled={disabled}
         readOnly={readOnly}
         shortcuts={shortcuts}
+        periodOptions={periodOptions}
       />
 
       {periodForRender === 'reboot' ? (
